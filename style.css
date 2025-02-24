@@ -1,0 +1,181 @@
+*{
+    margin: 0;
+    transition: .3s linear;
+    font-family: sans-serif;
+    padding: 0;
+}
+
+body{
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: radial-gradient(rgb(5, 221, 245), rgb(6, 150, 253));
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    perspective: 1000px;
+}
+
+.box{
+    height: 250px;
+    width: 250px;
+    transform-style: preserve-3d;
+    animation: animate 16s infinite;
+    animation-play-state: running;
+    /* transform: rotateX(45deg) rotateY(-45deg); */
+}
+
+@keyframes animate {
+    0% { transform: rotateX(45deg) rotateY(45deg);}
+    6.25% { transform: rotateX(-45deg) rotateY(45deg);}
+    12.5% { transform: rotateX(-45deg) rotateY(-45deg);}
+    18.75% { transform: rotateX(45deg) rotateY(-45deg);}
+    25% { transform: rotateX(45deg) rotateY(-135deg);}
+    31.25% { transform: rotateX(-45deg) rotateY(-135deg);}
+    37.5% { transform: rotateX(-45deg) rotateY(-225deg);}
+    43.75% { transform: rotateX(45deg) rotateY(-225deg);}
+    50% { transform: rotateX(45deg) rotateY(-315deg);}
+
+
+    56.25% { transform: rotateX(-45deg) rotateY(-315deg);}
+    62.50% { transform: rotateX(-45deg) rotateY(-225deg);}
+    68.75% { transform: rotateX(45deg) rotateY(-225deg);}
+    75% { transform: rotateX(45deg) rotateY(-135deg);}
+    81.25% { transform: rotateX(-45deg) rotateY(-135deg);}
+    87.5% { transform: rotateX(-45deg) rotateY(-45deg);}
+    93.75% { transform: rotateX(45deg) rotateY(-45deg);}
+    100% { transform: rotateX(45deg) rotateY(45deg);}
+}
+
+@keyframes animate2 {
+    0%{ transform: rotateX(0deg);}
+    100%{ transform: rotateX(360deg);}
+}
+
+@keyframes animate3 {
+    0%{ transform: rotateY(0deg);}
+    100%{ transform: rotateY(360deg);}
+}
+.card{
+    height: 250px;
+    width: 250px;
+    text-align: center;
+    padding: 100px 0;
+    color: white;
+    background: rgba(0, 0, 0, 0.63);
+    border: 2px solid white;
+    font-size: 32px;
+    box-sizing: border-box;
+    position: absolute;
+}
+
+#front{
+    transform: translateZ(125px);
+}
+
+#back{
+    transform: translateZ(-125px);
+}
+
+#left{
+    right: 125px;
+    transform: rotateY(-90deg);
+}
+
+#right{
+    left: 125px;
+    transform: rotateY(90deg);
+}
+
+#top{
+    bottom: 125px;
+    transform: rotateX(90deg);
+}
+
+#bottom{
+    top: 125px;
+    transform: rotateX(-90deg);
+}
+
+.button-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+input{
+    height: 50px;
+    width:  100px;
+    background: pink;
+    font-size: 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.btn{
+    /* height: 50px;
+    width:  100px; */
+    background: pink;
+    font-size: 22px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+input:hover, .btn:hover{
+    scale: 1.05;
+}
+
+input:active, .btn:active{
+    background: rgb(255, 163, 178);
+}
+
+#btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input:focus{
+    background: red;
+}
+
+input:focus ~ .box #front{
+    transform: translateZ(180px) rotateY(360deg);
+}
+
+input:focus ~ .box #back{
+    transform: translateZ(-180px) rotateY(360deg);
+}
+
+input:focus ~ .box #left{
+   right: 180px;
+}
+
+input:focus ~ .box #right{
+    left: 180px;
+}
+
+input:focus ~ .box #top{
+    bottom: 180px;
+}
+
+input:focus ~ .box #bottom{
+    top: 180px;
+}

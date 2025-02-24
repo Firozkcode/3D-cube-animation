@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <h1>3D cube animation</h1>
+    <div class="container">
+        <div class="button-container">
+            <!-- <input type="button" name="hit" value="hit me"> -->
+            <button class="btn" id="btn" title="Pause"><ion-icon name="play"></ion-icon></button>
+            <button class="btn one" id="animation-one">Zig-zag</button>
+            <button class="btn two" id="animation-two">Rotating Y-axis</button>
+            <button class="btn three" id="animation-three">Rotating X-axis</button>
+        </div>
+        <div class="box">
+            <div class="card" id="front">front</div>
+            <div class="card" id="back">back</div>
+            <div class="card" id="left">left</div>
+            <div class="card" id="right">right</div>
+            <div class="card" id="top">top</div>
+            <div class="card" id="bottom">bottom</div>
+        </div>
+    </div>
+
+    <script>
+        var button = document.getElementById('btn');
+        var box = document.querySelector('.box');
+
+        function stateChange(){
+            if(box.style.animationPlayState == 'paused'){
+                box.style.animationPlayState = 'running';
+            button.innerHTML = '<ion-icon name="play"></ion-icon>';
+            button.title = 'Pause';
+            } 
+            else{
+                box.style.animationPlayState = 'paused';
+                button.innerHTML = '<ion-icon name="pause"></ion-icon>';
+                button.title = 'Play';
+            }
+        }
+
+        document.getElementById("btn").addEventListener("click", function() {
+        stateChange();        
+        });
+
+        document.getElementById("animation-one").addEventListener("click", function() {
+            box.style.animation = 'animate 16s infinite'; 
+            box.style.animationPlayState = 'paused';
+            stateChange();
+        });
+
+        document.getElementById("animation-two").addEventListener("click", function() {
+            
+            box.style.animation = 'animate2 5s infinite linear'; 
+            box.style.animationPlayState = 'paused';
+            stateChange();
+        });
+
+        document.getElementById("animation-three").addEventListener("click", function() {
+           
+            box.style.animation = 'animate3 5s infinite linear';
+            box.style.animationPlayState = 'paused';
+            stateChange();
+        });
+
+
+    </script>
+
+</body>
+</html>
